@@ -148,15 +148,14 @@ istiod-5659cfbd55-9s92d   1/1     Running   0          18h
 Check for successful initialization messages:
 
 ```shell
-kubectl logs -n kmesh-system $(kubectl get pods -n kmesh-system -o jsonpath='{.items.metadata.name}')
+kubectl logs -n kmesh-system $(kubectl get pods -n kmesh-system -o jsonpath='{.items[].metadata.name}')
 ```
 
 Look for these key messages:
 
-- "bpf Start successful"
-- "controller Start successful"
-- "dump StartServer successful"
-- "command Start cni successful"
+- "bpf loader start successful"
+- "controller start successful"
+- "command start cni successful"
 
 ### 3. Verify CNI Configuration
 
@@ -262,6 +261,7 @@ Content-Length: 0
 ```
 
 Note: 10.244.0.21 is the IP of httpbin
+？
 
 ## Clean Up
 
